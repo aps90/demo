@@ -8,9 +8,9 @@ pipeline {
         notifyBuild('STARTED')
 
         //Pull the repo first
-        //checkoutStage()
+        checkoutStage()
 
-        checkoutTool("newfeature", "ssh://git@github.com:aps90/demo.git")
+        //checkoutTool("newfeature", "ssh://git@github.com:aps90/demo.git")
         sh 'ls -la'
 
         sh 'rm -vfR composer.lock'
