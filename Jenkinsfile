@@ -22,7 +22,7 @@ pipeline {
             case "newfeature":
               sh '/home/vagrant/.config/composer/vendor/bin/phploy --init'
               sh '/home/vagrant/.config/composer/vendor/bin/phploy --list'
-              //sh '/home/vagrant/.config/composer/vendor/bin/phploy -s newfeature'
+              sh '/home/vagrant/.config/composer/vendor/bin/phploy -s newfeature'
               //sh '/home/vagrant/.config/composer/vendor/bin/phploy --list'
               //sh '/home/vagrant/.config/composer/vendor/bin/phploy -s develop --rollback'
             break;
@@ -41,9 +41,6 @@ pipeline {
     }
     success {
       notifyBuild(currentBuild.result)
-    }
-    failure {
-      currentBuild.result = "FAILURE"  
     }
   }
 }
