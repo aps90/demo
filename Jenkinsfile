@@ -10,28 +10,8 @@ pipeline {
         //Pull the repo first
         checkoutStage()
 
-        //checkoutTool("newfeature", "ssh://git@github.com:aps90/demo.git")
-        sh 'ls -la'
-
-        sh 'rm -vfR composer.lock'
-        //Run git status to just log anything outstanding
-        sh 'git status'
-
-        script{
-          switch(env.BRANCH_NAME){
-            case "newfeature":
-              sh '/home/vagrant/.config/composer/vendor/bin/phploy --init'
-              //sh '/home/vagrant/.config/composer/vendor/bin/phploy --list'
-              sh '/home/vagrant/.config/composer/vendor/bin/phploy -s newfeature'
-              //sh '/home/vagrant/.config/composer/vendor/bin/phploy --list'
-              //sh '/home/vagrant/.config/composer/vendor/bin/phploy -s develop --rollback'
-            break;
-            
-            default:
-              echo "Skipping deploy, no deploy for branch '${env.BRANCH_NAME}'"
-            break;
-          }
-        }  
+        sh '/home/vagrant/.config/composer/vendor/bin/phploy --list'
+           
       }
     }
   }
